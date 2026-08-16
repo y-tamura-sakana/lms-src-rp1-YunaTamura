@@ -1,5 +1,6 @@
 package jp.co.sss.lms.mapper;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import jp.co.sss.lms.entity.TStudentAttendance;
  * 
  * @author 東京ITスクール
  */
+
 @Mapper
 public interface TStudentAttendanceMapper {
 
@@ -64,5 +66,17 @@ public interface TStudentAttendanceMapper {
 	 * @return 更新結果
 	 */
 	Boolean update(TStudentAttendance tStudentAttendance);
+
+	
+	/**
+	 * 勤怠情報（受講生入力）未入力件数取得
+	 * 
+	 * @author y-tamura
+	 * @param lmsUserId
+	 * @param deleteFlg
+	 * @param trainingDate
+	 * @return 未入力勤怠の件数
+	 */
+	Integer notEnterCount(@Param("lmsUserId")Integer lmsUserId, @Param("deleteFlg")Short deleteFlg, @Param("trainingDate")LocalDate trainingDate);											
 
 }
