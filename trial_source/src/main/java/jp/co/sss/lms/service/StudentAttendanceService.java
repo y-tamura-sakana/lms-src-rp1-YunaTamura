@@ -1,7 +1,6 @@
 package jp.co.sss.lms.service;
 
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -339,13 +338,17 @@ public class StudentAttendanceService {
 	/**
 	 * 過去日の未入力チェック
 	 * 
-	 * @param
-	 * @return
+	 * @author y-tamura
+	 * @param lmsUserid
+	 * @param deleteFlg
+	 * @param trainingDate
+	 * @return true
+	 * @return false
 	 */
-	public Boolean notEnterCount(Integer lmsUserId, Short deleteFlg, LocalDate trainingDate) {
+	public Boolean notEnterCount(Integer lmsUserId, Short deleteFlg, Date trainingDate) {
 		
 		//今日の日付を取得
-		LocalDate today = LocalDate.now();
+		trainingDate = new Date();
 		
 		//tStudentAttendanceMapper.noEnterCountを呼出、未入力件数を取得する
 		Integer count = tStudentAttendanceMapper.notEnterCount(lmsUserId, deleteFlg, trainingDate);
