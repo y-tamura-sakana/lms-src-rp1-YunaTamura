@@ -32,7 +32,7 @@
 				<small id="now"></small>
 			</div>
 			<div class="form-group">
-				<form th:action="@{/attendance/detail}" method="post" class="form-inline">
+				<form th:action="@{/attendance/detail}" method="post" class="form-inline" onsubmit="return punchCheck()">
 					<input type="submit" value="出勤" name="punchIn" class="btn btn-default" />
 					<input type="submit" value="退勤" name="punchOut" class="btn btn-default" />
 				</form>

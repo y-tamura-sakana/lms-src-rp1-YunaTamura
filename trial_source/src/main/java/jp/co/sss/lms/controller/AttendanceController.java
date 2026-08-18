@@ -57,7 +57,7 @@ public class AttendanceController {
 		Date today = new Date();
 		
 		//APIを呼び出し、過去日の未入力数をカウント
-		Boolean notEnter = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId(), (short)0, today);
+		Boolean notEnter = studentAttendanceService.notEnterCount();
 		
 		//取得した未入力カウント数が0より大きい場合、trueを返す、過去日未入力確認ダイアログを表示
 		if(notEnter) {

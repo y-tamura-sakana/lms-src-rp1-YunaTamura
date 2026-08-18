@@ -345,13 +345,15 @@ public class StudentAttendanceService {
 	 * @return true
 	 * @return false
 	 */
-	public Boolean notEnterCount(Integer lmsUserId, Short deleteFlg, Date trainingDate) {
+	public Boolean notEnterCount() {
 		
 		//今日の日付を取得
-		trainingDate = new Date();
+		Date today = new Date();
 		
 		//tStudentAttendanceMapper.noEnterCountを呼出、未入力件数を取得する
-		Integer count = tStudentAttendanceMapper.notEnterCount(lmsUserId, deleteFlg, trainingDate);
+		Date trainingDate = attendanceUtil.getTrainingDate();
+		
+		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), Constants.DB_FLG_FALSE, trainingDate);
 		
 		//件数が０より多ければtrue,そうでなければfalseを戻す
 		if(count > 0) {
