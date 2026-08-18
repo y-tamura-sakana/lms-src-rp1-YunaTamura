@@ -1,8 +1,6 @@
 package jp.co.sss.lms.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +40,7 @@ public class AttendanceController {
 	 * @throws ParseException
 	 */
 	@RequestMapping(path = "/detail", method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model) throws ParseException {
 
 		// 勤怠一覧の取得
 		//勤怠管理画面用DTOリストの取得
@@ -50,14 +48,9 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 
-		//現在より過去に未入力がないかチェック
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		
-		//現在日付を取得
-		Date today = new Date();
-		
 		//APIを呼び出し、過去日の未入力数をカウント
 		Boolean notEnter = studentAttendanceService.notEnterCount();
+		model.addAttribute(notEnter);
 		
 		//取得した未入力カウント数が0より大きい場合、trueを返す、過去日未入力確認ダイアログを表示
 		if(notEnter) {
