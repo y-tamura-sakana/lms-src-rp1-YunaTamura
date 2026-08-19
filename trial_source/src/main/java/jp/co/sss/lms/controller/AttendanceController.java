@@ -53,9 +53,9 @@ public class AttendanceController {
 		model.addAttribute(notEnter);
 		
 		//取得した未入力カウント数が0より大きい場合、trueを返す、過去日未入力確認ダイアログを表示
-		//if(notEnter) {
-		//	model.addAttribute("showNotEnterDialog",true);
-		//}
+		if(notEnter) {
+			model.addAttribute("showNotEnterDialog",true);
+		}
 		
 		return "attendance/detail";
 	}
@@ -154,6 +154,10 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
+		
+		//田村優和-task26
+		//出退勤時間をhh:mm形式に設定
+		studentAttendanceService.setAttendanceForm(attendanceManagementDtoList);
 
 		return "attendance/detail";
 	}
