@@ -21,6 +21,7 @@ public interface TStudentAttendanceMapper {
 	/**
 	 * 勤怠情報（受講生入力）取得（LMSユーザーID）
 	 * 
+	 * @author 東京ITスクール
 	 * @param lmsUserId
 	 * @param deleteFlg
 	 * @return 勤怠情報（受講生入力）エンティティ
@@ -31,6 +32,7 @@ public interface TStudentAttendanceMapper {
 	/**
 	 * 勤怠情報（受講生入力）取得（LMSユーザーID＆日付）
 	 * 
+	 * @author 東京ITスクール
 	 * @param lmsUserId
 	 * @param trainingDate
 	 * @param deleteFlg
@@ -42,6 +44,7 @@ public interface TStudentAttendanceMapper {
 	/**
 	 * 勤怠管理画面用DTOリスト取得
 	 * 
+	 * @author 東京ITスクール
 	 * @param courseId
 	 * @param lmsUserId
 	 * @param deleteFlg
@@ -53,6 +56,7 @@ public interface TStudentAttendanceMapper {
 	/**
 	 * 勤怠情報（受講生入力）登録
 	 * 
+	 * @author 東京ITスクール
 	 * @param tStudentAttendance
 	 * @return 登録結果
 	 */
@@ -61,6 +65,7 @@ public interface TStudentAttendanceMapper {
 	/**
 	 * 勤怠情報（受講生入力）更新
 	 * 
+	 * @author 東京ITスクール
 	 * @param tStudentAttendance
 	 * @return 更新結果
 	 */
@@ -70,12 +75,13 @@ public interface TStudentAttendanceMapper {
 	/**
 	 * 勤怠情報（受講生入力）未入力件数取得
 	 * 
-	 * @author y-tamura
+	 * @author 田村優和 Task25
 	 * @param lmsUserId
 	 * @param deleteFlg
 	 * @param trainingDate
 	 * @return 未入力勤怠の件数
 	 */
-	Integer notEnterCount(@Param("lmsUserId")Integer lmsUserId, @Param("deleteFlg")Short deleteFlg, @Param("trainingDate")Date trainingDate);											
+	Integer notEnterCount(@Param("lmsUserId")Integer lmsUserId,
+			@Param("deleteFlg")Short deleteFlg, @Param("trainingDate")Date trainingDate);											
 
 }

@@ -33,8 +33,7 @@ public class AttendanceController {
 	/**
 	 * 勤怠管理画面 初期表示
 	 * 
-	 * @param lmsUserId
-	 * @param courseId
+	 * @author 東京ITスクール Task25
 	 * @param model
 	 * @return 勤怠管理画面
 	 * @throws ParseException
@@ -48,14 +47,15 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 
+		//田村優和-Task25
 		//APIを呼び出し、過去日の未入力数をカウント
 		Boolean notEnter = studentAttendanceService.notEnterCount();
 		model.addAttribute(notEnter);
 		
 		//取得した未入力カウント数が0より大きい場合、trueを返す、過去日未入力確認ダイアログを表示
-		if(notEnter) {
-			model.addAttribute("showNotEnterDialog",true);
-		}
+		//if(notEnter) {
+		//	model.addAttribute("showNotEnterDialog",true);
+		//}
 		
 		return "attendance/detail";
 	}
@@ -63,6 +63,7 @@ public class AttendanceController {
 	/**
 	 * 勤怠管理画面 『出勤』ボタン押下
 	 * 
+	 * @author 東京ITスクール
 	 * @param model
 	 * @return 勤怠管理画面
 	 */
@@ -88,6 +89,7 @@ public class AttendanceController {
 	/**
 	 * 勤怠管理画面 『退勤』ボタン押下
 	 * 
+	 * @author 東京ITスクール
 	 * @param model
 	 * @return 勤怠管理画面
 	 */
@@ -113,6 +115,7 @@ public class AttendanceController {
 	/**
 	 * 勤怠管理画面 『勤怠情報を直接編集する』リンク押下
 	 * 
+	 * @author 東京ITスクール
 	 * @param model
 	 * @return 勤怠情報直接変更画面
 	 */
@@ -133,6 +136,7 @@ public class AttendanceController {
 	/**
 	 * 勤怠情報直接変更画面 『更新』ボタン押下
 	 * 
+	 * @author 東京ITスクール
 	 * @param attendanceForm
 	 * @param model
 	 * @param result

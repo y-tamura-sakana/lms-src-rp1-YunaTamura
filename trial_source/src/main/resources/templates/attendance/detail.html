@@ -87,14 +87,14 @@
 			return hours + ':' + minutes;
 		}
 		
-		/*未入力ダイアログの表示*/
+		/*未入力ダイアログの表示　田村優和-Task25*/
 		let notEnterFlg = /*[[${showNotEnterDialog}]]*/ false;
 		window.onload = function () {
 		          if (notEnterFlg) {
 		            alert("過去日の勤怠に未入力があります。");
 		          }
 		        };
-
+		/*打刻確認ダイアログの表示　田村優和-Task24*/
 		        function punchCheck() {
 		          if (confirm("打刻します。よろしいですか？")) {
 		            return true;
