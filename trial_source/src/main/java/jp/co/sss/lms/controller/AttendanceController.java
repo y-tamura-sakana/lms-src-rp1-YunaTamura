@@ -146,6 +146,9 @@ public class AttendanceController {
 	@RequestMapping(path = "/update", params = "complete", method = RequestMethod.POST)
 	public String complete(AttendanceForm attendanceForm, Model model, BindingResult result)
 			throws ParseException {
+		//田村優和-task26
+		//出退勤時間をhh:mm形式に設定
+		studentAttendanceService.formatConversion(attendanceForm);
 
 		// 更新
 		String message = studentAttendanceService.update(attendanceForm);
@@ -155,10 +158,6 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 		
-		//田村優和-task26
-		//出退勤時間をhh:mm形式に設定
-		studentAttendanceService.setAttendanceForm(attendanceManagementDtoList);
-
 		return "attendance/detail";
 	}
 	

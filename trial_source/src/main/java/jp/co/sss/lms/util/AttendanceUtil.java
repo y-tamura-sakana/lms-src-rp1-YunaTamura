@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jp.co.sss.lms.dto.AttendanceManagementDto;
 import jp.co.sss.lms.enums.AttendanceStatusEnum;
 import jp.co.sss.lms.mapper.MSectionMapper;
 
@@ -22,6 +23,8 @@ public class AttendanceUtil {
 	private DateUtil dateUtil;
 	@Autowired
 	private MSectionMapper mSectionMapper;
+	@Autowired
+	private AttendanceManagementDto attendanceManagementDto;
 
 	/**
 	 * SSS定時・出退勤時間を元に、遅刻早退を判定をする
@@ -132,6 +135,78 @@ public class AttendanceUtil {
 		return map;
 	}
 
+	/**
+	 * 時間のプルダウンマップを生成
+	 * 
+	 * @author 田村優和　Task26
+	 * @return timeMap 1時間刻みの時間(数値)マップ
+	 * */
+	
+	public LinkedHashMap<Integer, String> getHourMap(){
+		LinkedHashMap<Integer, String> timeMap = new LinkedHashMap<Integer, String>();
+		
+		//時間マップに{null, ""}を追加する
+		timeMap.put(null, "");
+		
+		for(int i = 0; i < 24; i++) {
+			timeMap.put(i, String.format("%02d", i));
+		}
+		
+		return timeMap;
+	}
+	
+	/**
+	 * 分のプルダウンマップを生成
+	 * 
+	 * @author 田村優和　Task26
+	 * @return minuteMap 1時間刻みの時間(数値)マップ
+	 * */
+	public LinkedHashMap<Integer, String> getMinuteMap(){
+		//分マップを生成
+		LinkedHashMap<Integer, String> minuteMap = new LinkedHashMap<Integer, String>();
+		
+		//分マップに{null, ""}を追加する
+		minuteMap.put(null, "");
+		
+		for(int i = 0; i < 60; i++) {
+			minuteMap.put(i, String.format("%02d", i));	
+		}
+		
+		return minuteMap;
+	}
+	
+	/**
+	 * 時間(時)の切り出し
+	 * 
+	 * @author 田村優和　task26
+	 * @return hour　出退勤時間(時間)
+	 * */
+		public Integer getHour(String timeString) {
+			Integer hour =null;
+			if(timeString != null && !timeString.isEmpty() && timeString.length() >=5) {
+				hour = Integer.parseInt(timeString.substring(0, 2));
+			}else {
+				hour = null;
+			}
+			return hour;
+		}
+	
+	/**
+	 * 時間(分)の切り出し
+	 * 
+	 * @author 田村優和　Task26
+	 * @return minute  出退勤時間(分)
+	 * */
+		public Integer getMinute(String timeString) {
+			Integer minute =null;
+			if(timeString != null && !timeString.isEmpty() && timeString.length() >=5) {
+				minute = Integer.parseInt(timeString.substring(3, 5));
+			}else{
+				minute = null;
+			}
+			return minute;
+		}
+	
 	/**
 	 * 研修日の判定
 	 * 

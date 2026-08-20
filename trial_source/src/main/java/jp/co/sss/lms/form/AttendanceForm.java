@@ -34,6 +34,7 @@ public class AttendanceForm {
 	
 	/**時分ごとにセットするリスト*/
 	private LinkedHashMap<Integer, String> timeMap;
+	
 	private LinkedHashMap<Integer, String> minuteMap;
 
 
