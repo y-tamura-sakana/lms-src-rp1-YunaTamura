@@ -88,12 +88,13 @@
 		}
 		
 		/*未入力ダイアログの表示　田村優和-Task25*/
-		let notEnterFlg = /*[[${showNotEnterDialog}]]*/ false;
+		const notEnterFlg = /*[[${showNotEnterDialog}]]*/ false;
 		window.onload = function () {
 		          if (notEnterFlg) {
 		            alert("過去日の勤怠に未入力があります。");
 		          }
 		        };
+	
 		/*打刻確認ダイアログの表示　田村優和-Task24*/
 		        function punchCheck() {
 		          if (confirm("打刻します。よろしいですか？")) {
@@ -102,26 +103,6 @@
 		            return false;
 		          }
 		        }
-
-		        $("#page_top").hide();
-		        $(window).scroll(function () {
-		          if ($(this).scrollTop() > 300) {
-		            $("#page_top").fadeIn();
-		          } else {
-		            $("#page_top").fadeOut();
-		          }
-		        });
-
-		        $("#page_top").click(function () {
-		          $("body,html").animate(
-		            {
-		              scrollTop: 0,
-		            },
-		            700
-		          );
-		          return false;
-		        });
-
 	</script>
 
 </body>

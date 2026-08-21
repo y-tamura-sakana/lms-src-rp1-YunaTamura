@@ -50,12 +50,9 @@ public class AttendanceController {
 		//田村優和-Task25
 		//APIを呼び出し、過去日の未入力数をカウント
 		Boolean notEnter = studentAttendanceService.notEnterCount();
-		model.addAttribute(notEnter);
 		
 		//取得した未入力カウント数が0より大きい場合、trueを返す、過去日未入力確認ダイアログを表示
-		if(notEnter) {
-			model.addAttribute("showNotEnterDialog",true);
-		}
+		model.addAttribute("showNotEnterDialog",notEnter);
 		
 		return "attendance/detail";
 	}
